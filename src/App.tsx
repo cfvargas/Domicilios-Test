@@ -1,5 +1,5 @@
 import React from 'react'
-import {Post, Layout, LayoutFeed, postType} from './components'
+import {Post, Layout, LayoutFeed, Header, postType} from './components'
 
 const comment = {
   id: 'xxx-yyy-zzz',
@@ -65,6 +65,7 @@ const fakePost: postType = {
 function App() {
   return (
     <Layout>
+      <Header>Domicilios Test</Header>
       <LayoutFeed>
         <Post post={fakePost} />
         <Post post={fakePost} />
