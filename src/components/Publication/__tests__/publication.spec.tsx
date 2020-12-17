@@ -1,9 +1,9 @@
 import React from 'react'
 import moment from 'moment'
 import {render, screen} from '@testing-library/react'
-import Post from '..'
+import Publication, {publicationType} from '../'
 
-const fakePost: any = {
+const fakePublication: publicationType = {
   user: {
     firstName: 'Cristian',
     lastName: 'Vargas',
@@ -13,22 +13,22 @@ const fakePost: any = {
   created: new Date(),
 }
 
-describe('Post', () => {
+describe('Publication', () => {
   test('Render ok', () => {
-    render(<Post post={fakePost} />)
+    render(<Publication publication={fakePublication} />)
   })
 
-  test('should render post information', () => {
-    render(<Post post={fakePost} />)
+  test('should render publication information', () => {
+    render(<Publication publication={fakePublication} />)
 
     expect(screen.getByText(/cristian vargas/i)).toBeInTheDocument()
     expect(
-      screen.getByText(moment(fakePost.created).fromNow()),
+      screen.getByText(moment(fakePublication.created).fromNow()),
     ).toBeInTheDocument()
-    expect(screen.getByText(fakePost.content)).toBeInTheDocument()
+    expect(screen.getByText(fakePublication.content)).toBeInTheDocument()
     expect(screen.getByAltText(/cristian's avatar/i)).toHaveAttribute(
       'src',
-      fakePost.user.picture,
+      fakePublication.user.picture,
     )
   })
 })

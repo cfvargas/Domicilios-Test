@@ -1,7 +1,7 @@
 import React from 'react'
-import {Post, postType} from './components'
+import {Post, publicationType} from './components'
 
-const fakePost: postType = {
+const fakePost: publicationType = {
   user: {
     firstName: 'Cristian',
     lastName: 'Vargas',
