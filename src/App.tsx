@@ -1,5 +1,5 @@
 import React from 'react'
-import {Post, publicationType} from './components'
+import {Post, Reactions, publicationType} from './components'
 
 const fakePost: publicationType = {
   user: {
@@ -17,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <Post post={fakePost} />
+      <Reactions handleReactionClick={type => console.log('type', type)} />
     </div>
   )
 }
