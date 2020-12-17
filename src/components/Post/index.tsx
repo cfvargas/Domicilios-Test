@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {PostContext, PostContextType} from '../../contexts/Posts'
 import colors from '../../config/colors'
 import {
   Box,
@@ -13,7 +14,7 @@ import {
 
 export type postType = publicationType & {
   comments: publicationType[]
-  reactions: reactionType[]
+  reactions: reactionType
 }
 
 export interface PostProps {
@@ -21,6 +22,7 @@ export interface PostProps {
 }
 
 const Post = ({post}: PostProps) => {
+  const {addReaction} = React.useContext(PostContext) as PostContextType
   const [showComments, setShowComments] = React.useState(false)
 
   return (
@@ -28,7 +30,11 @@ const Post = ({post}: PostProps) => {
       <Box>
         <Box.Body>
           <Publication publication={post} />
-          <Reactions handleReactionClick={console.log} />
+          <Reactions
+            handleReactionClick={reactionType =>
+              addReaction(post.id, reactionType)
+            }
+          />
           <Button
             onClick={() => setShowComments(!showComments)}
             appearance="secondary"
@@ -37,11 +43,7 @@ const Post = ({post}: PostProps) => {
           </Button>
         </Box.Body>
         <Box.Footer align="space-between">
-          {post.reactions.length ? (
-            <Reactions.Counter reactions={post.reactions} />
-          ) : (
-            <span />
-          )}
+          <Reactions.Counter reactions={post.reactions} />
           {post.comments.length ? (
             <Post.CommentsLength onClick={() => setShowComments(!showComments)}>
               {post.comments.length} comentarios

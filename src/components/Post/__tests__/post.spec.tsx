@@ -2,11 +2,13 @@ import React from 'react'
 import moment from 'moment'
 import {render, screen} from '@testing-library/react'
 import user from '@testing-library/user-event'
+import PostsProvider from '../../../contexts/Posts'
 import Post, {postType} from '..'
 
 const fakeComment = {
   id: 'xxx-yyy-zzz',
   user: {
+    id: 'xxx-yyy',
     firstName: 'Cristian',
     lastName: 'Vargas',
     picture:
@@ -17,7 +19,9 @@ const fakeComment = {
 }
 
 const fakePost: postType = {
+  id: 'xx-ppp',
   user: {
+    id: 'xxx',
     firstName: 'Cristian',
     lastName: 'Vargas',
     picture: 'https://cristian-picture.png',
@@ -32,13 +36,27 @@ const fakePost: postType = {
       user: {...fakeComment.user, firstName: 'Andres'},
     },
   ],
-  reactions: [],
+  reactions: {
+    like: [],
+    love: [],
+    care: [],
+  },
   created: new Date(),
 }
 
+beforeEach(() => {
+  localStorage.setItem('posts', JSON.stringify([fakePost]))
+})
+
+const Component = () => (
+  <PostsProvider>
+    <Post post={fakePost} />
+  </PostsProvider>
+)
+
 describe('Post', () => {
   test('Render ok', () => {
-    render(<Post post={fakePost} />)
+    render(<Component />)
 
     expect(
       screen.queryByPlaceholderText(/escribe un comentario/i),
@@ -46,7 +64,7 @@ describe('Post', () => {
   })
 
   test('should render post information', () => {
-    render(<Post post={fakePost} />)
+    render(<Component />)
 
     expect(screen.getByText(/cristian vargas/i)).toBeInTheDocument()
     expect(
@@ -60,7 +78,7 @@ describe('Post', () => {
   })
 
   test('hide reactions when click on icon', () => {
-    render(<Post post={fakePost} />)
+    render(<Component />)
 
     const button = screen.getByRole('button', {name: /reaccionar/i})
     user.hover(button)
@@ -74,7 +92,7 @@ describe('Post', () => {
   })
 
   test('show comments', () => {
-    render(<Post post={fakePost} />)
+    render(<Component />)
 
     const commentButton = screen.getByRole('button', {name: 'Comentar'})
     // click to show comments

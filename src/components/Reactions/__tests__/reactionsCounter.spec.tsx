@@ -2,34 +2,32 @@ import React from 'react'
 import {render, screen} from '@testing-library/react'
 import ReactionsCounter, {reactionType} from '../ReactionsCounter'
 
-const fakeReactions: reactionType[] = [
-  {
-    type: 'like',
-    users: [
-      {
-        firstName: 'Cristian',
-        lastName: 'Vargas',
-      },
-      {
-        firstName: 'Andres',
-        lastName: 'Lozano',
-      },
-    ],
-  },
-  {
-    type: 'love',
-    users: [
-      {
-        firstName: 'Danilo',
-        lastName: 'Caviedes',
-      },
-      {
-        firstName: 'Jose',
-        lastName: 'Perdomo',
-      },
-    ],
-  },
-]
+const fakeReactions: reactionType = {
+  like: [
+    {
+      id: 'xxx-yyy',
+      firstName: 'Cristian',
+      lastName: 'Vargas',
+    },
+    {
+      id: 'xxx-yyxy',
+      firstName: 'Andres',
+      lastName: 'Lozano',
+    },
+  ],
+  love: [
+    {
+      id: 'xxx-yy',
+      firstName: 'Danilo',
+      lastName: 'Caviedes',
+    },
+    {
+      id: 'xxx-yyxy',
+      firstName: 'Jose',
+      lastName: 'Perdomo',
+    },
+  ],
+}
 
 describe('ReactionsCounter', () => {
   test('Render ok', () => {

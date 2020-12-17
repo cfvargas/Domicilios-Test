@@ -8,14 +8,14 @@ import {Button} from '../'
 import ReactionsCounter from './ReactionsCounter'
 
 export interface ReactionsProps {
-  handleReactionClick: (reactionType: string) => void
+  handleReactionClick: (reactionType: 'like' | 'love' | 'care') => void
 }
 
 const Reactions = ({handleReactionClick}: ReactionsProps) => {
   const [showReactions, setShowReactions] = React.useState(false)
 
   function hanldeIconClick(event: React.MouseEvent<HTMLButtonElement>) {
-    handleReactionClick(event.currentTarget.name)
+    handleReactionClick(event.currentTarget.name as 'like' | 'love' | 'care')
     setShowReactions(false)
   }
 

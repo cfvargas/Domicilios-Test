@@ -4,13 +4,14 @@ import moment from 'moment'
 import colors from '../../config/colors'
 
 export type userType = {
+  id: string
   firstName: string
   lastName: string
   picture: string
 }
 
 export type publicationType = {
-  id?: string
+  id: string
   user: userType
   content: string
   created: Date
