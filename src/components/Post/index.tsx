@@ -28,7 +28,7 @@ const Post = ({post}: PostProps) => {
         </Box.Body>
       </Box>
       {showComments ? (
-        <Box>
+        <Box appearance="lightGray">
           <Box.Body>
             {post.comments.map(comment => (
               <Publication key={comment.id} publication={comment} />

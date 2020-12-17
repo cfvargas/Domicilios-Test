@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import colors from '../../config/colors'
 
 export interface BoxProps {
+  appearance?: 'lightGray' | 'white'
   children: React.ReactNode
 }
 
 const Box = (props: BoxProps) => <Box.Element {...props} />
 
-Box.Element = styled.div`
-  background-color: ${colors.white};
+Box.Element = styled.div<BoxProps>`
+  background-color: ${props => colors[props.appearance || 'white']};
   border: 1px solid ${colors.border};
   box-shadow: 0 0 15px 0 ${colors.border};
 `
