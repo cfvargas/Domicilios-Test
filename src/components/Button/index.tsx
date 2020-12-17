@@ -1,6 +1,6 @@
 import {ButtonHTMLAttributes} from 'react'
 import styled from 'styled-components'
-import appearances from './appearences'
+import appearances from './appearances'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   appearance: 'primary' | 'secondary'
