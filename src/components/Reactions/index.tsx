@@ -45,6 +45,7 @@ const Reactions = ({handleReactionClick}: ReactionsProps) => {
 Reactions.Element = styled.div`
   position: relative;
   display: inline;
+  margin-left: 42px;
 `
 
 Reactions.IconsContainer = styled.div`
@@ -55,7 +56,7 @@ Reactions.IconsContainer = styled.div`
   box-shadow: 0 0 9px ${colors.border};
   border-radius: 50px;
   top: -45px;
-
+  left: -10px;
   button {
     border: none;
     background-color: transparent;

@@ -6,6 +6,7 @@ import Publication from './Publication'
 import Reactions from './Reactions'
 import Layout from './Layout'
 import Header from './Header'
+import AddPost from './AddPost'
 
 export * from './Input'
 export * from './Button'
@@ -16,5 +17,16 @@ export * from './Reactions'
 export * from './Reactions/ReactionsCounter'
 export * from './Layout'
 export * from './Header'
+export * from './AddPost'
 
-export {Input, Button, Box, Post, Publication, Reactions, Layout, Header}
+export {
+  Input,
+  Button,
+  Box,
+  Post,
+  Publication,
+  Reactions,
+  Layout,
+  Header,
+  AddPost,
+}

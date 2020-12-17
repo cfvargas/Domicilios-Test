@@ -9,7 +9,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input = styled.input<InputProps>`
   width: 100%;
   border: 1px solid ${colors.border};
-  padding: 13px 10px;
+  padding: 1rem 10px;
   outline: none;
   color: ${props => colors[props.color || 'black']};
   box-sizing: border-box;
