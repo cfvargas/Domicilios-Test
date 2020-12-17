@@ -7,6 +7,7 @@ import Reactions from './Reactions'
 import Layout from './Layout'
 import Header from './Header'
 import AddPost from './AddPost'
+import Feed from './Feed'
 
 export * from './Input'
 export * from './Button'
@@ -18,6 +19,7 @@ export * from './Reactions/ReactionsCounter'
 export * from './Layout'
 export * from './Header'
 export * from './AddPost'
+export * from './Feed'
 
 export {
   Input,
@@ -29,4 +31,5 @@ export {
   Layout,
   Header,
   AddPost,
+  Feed,
 }

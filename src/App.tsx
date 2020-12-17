@@ -1,5 +1,6 @@
 import React from 'react'
-import {Post, Layout, LayoutFeed, Header, AddPost, postType} from './components'
+import PostsProvider from './contexts/Posts'
+import {Feed, Layout, LayoutFeed, Header, AddPost} from './components'
 
 const comment = {
   id: 'xxx-yyy-zzz',
@@ -12,7 +13,7 @@ const comment = {
   created: new Date(),
 }
 
-const fakePost: postType = {
+const fakePost: any = {
   user: {
     firstName: 'Cristian',
     lastName: 'Vargas',
@@ -63,12 +64,12 @@ function App() {
   return (
     <Layout>
       <Header>Domicilios Test</Header>
-      <LayoutFeed>
-        <AddPost />
-        <Post post={fakePost} />
-        <Post post={fakePost} />
-        <Post post={fakePost} />
-      </LayoutFeed>
+      <PostsProvider>
+        <LayoutFeed>
+          <AddPost />
+          <Feed />
+        </LayoutFeed>
+      </PostsProvider>
     </Layout>
   )
 }

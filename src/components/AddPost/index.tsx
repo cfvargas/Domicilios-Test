@@ -1,10 +1,14 @@
 import React from 'react'
+import {PostContext, PostContextType} from '../../contexts/Posts'
 import {Button, Input, Box} from '../'
 
 const AddPost = () => {
+  const {addPost} = React.useContext(PostContext) as PostContextType
   const [message, setMessage] = React.useState('')
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    addPost(message)
+    setMessage('')
   }
 
   function handleOnchange(event: React.ChangeEvent<HTMLInputElement>) {
