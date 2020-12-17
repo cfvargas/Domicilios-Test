@@ -12,6 +12,7 @@ const Input = styled.input<InputProps>`
   padding: 13px 10px;
   outline: none;
   color: ${props => colors[props.color || 'black']};
+  box-sizing: border-box;
 
   &:focus,
   &:active {
