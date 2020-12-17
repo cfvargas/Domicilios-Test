@@ -55,7 +55,7 @@ const Post = ({post}: PostProps) => {
         <Box appearance="lightGray">
           <Box.Body>
             {post.comments.map(comment => (
-              <Publication key={comment.id} publication={comment} />
+              <Publication align="row" key={comment.id} publication={comment} />
             ))}
             <Input type="text" placeholder="Escribe un comentario" />
           </Box.Body>

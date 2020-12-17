@@ -18,9 +18,10 @@ export type publicationType = {
 
 export interface PublicationProps {
   publication: publicationType
+  align?: 'column' | 'row'
 }
 
-const Publication = ({publication}: PublicationProps) => (
+const Publication = ({publication, align = 'column'}: PublicationProps) => (
   <Publication.Element>
     <Publication.Avatar>
       <img
@@ -28,7 +29,7 @@ const Publication = ({publication}: PublicationProps) => (
         src={publication.user.picture}
       />
     </Publication.Avatar>
-    <Publication.Description>
+    <Publication.Description align={align}>
       <div>
         <Publication.UserName>{`${publication.user.firstName} ${publication.user.lastName}`}</Publication.UserName>
         <Publication.Created>
@@ -43,15 +44,28 @@ const Publication = ({publication}: PublicationProps) => (
 Publication.Element = styled.div`
   display: flex;
   align-items: flex-start;
+  padding: 0.5rem 0;
 `
 
-Publication.Description = styled.div`
+interface DescriptionProps {
+  align: 'column' | 'row'
+}
+
+Publication.Description = styled.div<DescriptionProps>`
+  display: flex;
+  flex-direction: ${props => props.align};
+  align-items: flex-start;
   width: 100%;
   padding: 0 1rem;
+
+  > div {
+    min-width: 130px;
+  }
 `
 
 Publication.UserName = styled.span`
   font-weight: bold;
+  line-height: 1.5;
   color: ${colors.green};
 `
 
@@ -62,7 +76,7 @@ Publication.Created = styled.span`
 `
 
 Publication.Content = styled.p`
-  margin: 10px 0;
+  margin: 0 0;
   font-size: 15px;
   line-height: 1.5;
 `
