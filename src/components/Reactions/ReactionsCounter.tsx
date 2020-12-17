@@ -32,6 +32,9 @@ const ReactionsCounter = ({reactions}: ReactionsCounterProps) => {
     }, 0)
   }
 
+  if (!getReactionsLength()) {
+    return <span />
+  }
   return (
     <ReactionsCounter.Element>
       {Object.getOwnPropertyNames(reactions).map((type: string) => {

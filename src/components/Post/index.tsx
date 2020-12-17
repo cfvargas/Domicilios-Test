@@ -7,7 +7,7 @@ import {
   Publication,
   Reactions,
   Button,
-  Input,
+  Comments,
   publicationType,
   reactionType,
 } from '../'
@@ -22,21 +22,8 @@ export interface PostProps {
 }
 
 const Post = ({post}: PostProps) => {
-  const [comment, setComment] = React.useState('')
-  const {addReaction, addComment} = React.useContext(
-    PostContext,
-  ) as PostContextType
+  const {addReaction} = React.useContext(PostContext) as PostContextType
   const [showComments, setShowComments] = React.useState(false)
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setComment(event.target.value)
-  }
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    addComment(post.id, comment)
-    setComment('')
-  }
 
   return (
     <Post.Element>
@@ -57,32 +44,13 @@ const Post = ({post}: PostProps) => {
         </Box.Body>
         <Box.Footer align="space-between">
           <Reactions.Counter reactions={post.reactions} />
-          {post.comments.length ? (
-            <Post.CommentsLength onClick={() => setShowComments(!showComments)}>
-              {post.comments.length} comentarios
-            </Post.CommentsLength>
-          ) : (
-            <span />
-          )}
+          <Post.CommentsLength onClick={() => setShowComments(!showComments)}>
+            {post.comments.length}{' '}
+            {post.comments.length === 1 ? 'comentario' : 'comentarios'}
+          </Post.CommentsLength>
         </Box.Footer>
       </Box>
-      {showComments ? (
-        <Box appearance="lightGray">
-          <Box.Body>
-            {post.comments.map(comment => (
-              <Publication align="row" key={comment.id} publication={comment} />
-            ))}
-            <form onSubmit={handleSubmit}>
-              <Input
-                value={comment}
-                onChange={handleChange}
-                type="text"
-                placeholder="Escribe un comentario"
-              />
-            </form>
-          </Box.Body>
-        </Box>
-      ) : null}
+      {showComments ? <Comments post={post} /> : null}
     </Post.Element>
   )
 }

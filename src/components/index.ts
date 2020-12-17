@@ -8,6 +8,7 @@ import Layout from './Layout'
 import Header from './Header'
 import AddPost from './AddPost'
 import Feed from './Feed'
+import Comments from './Comments'
 
 export * from './Input'
 export * from './Button'
@@ -20,6 +21,7 @@ export * from './Layout'
 export * from './Header'
 export * from './AddPost'
 export * from './Feed'
+export * from './Comments'
 
 export {
   Input,
@@ -32,4 +34,5 @@ export {
   Header,
   AddPost,
   Feed,
+  Comments,
 }
