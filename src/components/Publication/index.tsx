@@ -10,6 +10,7 @@ export type userType = {
 }
 
 export type publicationType = {
+  id?: string
   user: userType
   content: string
   created: Date
