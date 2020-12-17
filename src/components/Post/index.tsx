@@ -22,8 +22,21 @@ export interface PostProps {
 }
 
 const Post = ({post}: PostProps) => {
-  const {addReaction} = React.useContext(PostContext) as PostContextType
+  const [comment, setComment] = React.useState('')
+  const {addReaction, addComment} = React.useContext(
+    PostContext,
+  ) as PostContextType
   const [showComments, setShowComments] = React.useState(false)
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setComment(event.target.value)
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    addComment(post.id, comment)
+    setComment('')
+  }
 
   return (
     <Post.Element>
@@ -59,7 +72,14 @@ const Post = ({post}: PostProps) => {
             {post.comments.map(comment => (
               <Publication align="row" key={comment.id} publication={comment} />
             ))}
-            <Input type="text" placeholder="Escribe un comentario" />
+            <form onSubmit={handleSubmit}>
+              <Input
+                value={comment}
+                onChange={handleChange}
+                type="text"
+                placeholder="Escribe un comentario"
+              />
+            </form>
           </Box.Body>
         </Box>
       ) : null}
