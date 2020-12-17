@@ -1,4 +1,5 @@
 import React from 'react'
+import {UserContext, UserContextType} from './User'
 import {postType} from '../components'
 import {v4 as uuid} from 'uuid'
 
@@ -15,14 +16,8 @@ function getPostsFromLocalStorage() {
   return JSON.parse(localStorage.getItem('posts') || '[]')
 }
 
-const currentUser = {
-  id: 'xxx',
-  firstName: 'Cristian',
-  lastName: 'Vargas',
-  picture: 'https://picsum.photos/200',
-}
-
 const PostProvider: React.FC = ({children}) => {
+  const {currentUser} = React.useContext(UserContext) as UserContextType
   const [posts, setPosts] = React.useState<postType[]>(getPostsFromLocalStorage)
 
   function addPost(message: string) {

@@ -7,9 +7,7 @@ const Feed = () => {
 
   return (
     <React.Fragment>
-      {posts.map(post => (
-        <Post key={post.id} post={post} />
-      ))}
+      {posts.map(post => <Post key={post.id} post={post} />).reverse()}
     </React.Fragment>
   )
 }

@@ -9,6 +9,7 @@ import Header from './Header'
 import AddPost from './AddPost'
 import Feed from './Feed'
 import Comments from './Comments'
+import PrivateComponent from './PrivateComponent'
 
 export * from './Input'
 export * from './Button'
@@ -35,4 +36,5 @@ export {
   AddPost,
   Feed,
   Comments,
+  PrivateComponent,
 }
