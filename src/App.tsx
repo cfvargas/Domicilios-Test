@@ -31,6 +31,34 @@ const fakePost: postType = {
       user: {...comment.user, firstName: 'Andres'},
     },
   ],
+  reactions: [
+    {
+      type: 'like',
+      users: [
+        {
+          firstName: 'Cristian',
+          lastName: 'Vargas',
+        },
+        {
+          firstName: 'Andres',
+          lastName: 'Lozano',
+        },
+      ],
+    },
+    {
+      type: 'love',
+      users: [
+        {
+          firstName: 'Danilo',
+          lastName: 'Caviedes',
+        },
+        {
+          firstName: 'Jose',
+          lastName: 'Perdomo',
+        },
+      ],
+    },
+  ],
   created: new Date(),
 }
 

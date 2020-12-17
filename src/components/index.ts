@@ -10,6 +10,7 @@ export * from './Button'
 export * from './Box'
 export * from './Post'
 export * from './Publication'
-export * from './Publication'
+export * from './Reactions'
+export * from './Reactions/ReactionsCounter'
 
 export {Input, Button, Box, Post, Publication, Reactions}

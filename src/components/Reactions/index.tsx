@@ -5,6 +5,7 @@ import loveIcon from '../../assets/icons/love.png'
 import careIcon from '../../assets/icons/care.png'
 import colors from '../../config/colors'
 import {Button} from '../'
+import ReactionsCounter from './ReactionsCounter'
 
 export interface ReactionsProps {
   handleReactionClick: (reactionType: string) => void
@@ -76,5 +77,7 @@ Reactions.IconsContainer = styled.div`
     }
   }
 `
+
+Reactions.Counter = ReactionsCounter
 
 export default Reactions

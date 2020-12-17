@@ -1,9 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Box, Publication, Reactions, Button, Input, publicationType} from '../'
+import colors from '../../config/colors'
+import {
+  Box,
+  Publication,
+  Reactions,
+  Button,
+  Input,
+  publicationType,
+  reactionType,
+} from '../'
 
 export type postType = publicationType & {
   comments: publicationType[]
+  reactions: reactionType[]
 }
 
 export interface PostProps {
@@ -26,6 +36,20 @@ const Post = ({post}: PostProps) => {
             Comentar
           </Button>
         </Box.Body>
+        <Box.Footer align="space-between">
+          {post.reactions.length ? (
+            <Reactions.Counter reactions={post.reactions} />
+          ) : (
+            <span />
+          )}
+          {post.comments.length ? (
+            <Post.CommentsLength onClick={() => setShowComments(!showComments)}>
+              {post.comments.length} comentarios
+            </Post.CommentsLength>
+          ) : (
+            <span />
+          )}
+        </Box.Footer>
       </Box>
       {showComments ? (
         <Box appearance="lightGray">
@@ -42,5 +66,12 @@ const Post = ({post}: PostProps) => {
 }
 
 Post.Element = styled.article``
-
+Post.CommentsLength = styled.button`
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  color: ${colors.gray};
+  outline: none;
+`
 export default Post

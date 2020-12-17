@@ -32,6 +32,7 @@ const fakePost: postType = {
       user: {...fakeComment.user, firstName: 'Andres'},
     },
   ],
+  reactions: [],
   created: new Date(),
 }
 
@@ -75,7 +76,7 @@ describe('Post', () => {
   test('show comments', () => {
     render(<Post post={fakePost} />)
 
-    const commentButton = screen.getByRole('button', {name: /comentar/i})
+    const commentButton = screen.getByRole('button', {name: 'Comentar'})
     // click to show comments
     user.click(commentButton)
 
